@@ -1,4 +1,4 @@
-# submodule-split-sample
+# git-submodule-split
 *Split a big project into submodules*
 
 ## Extracting Branches
