@@ -3,19 +3,18 @@
 
 ## Extracting Branches
 
-Split a new branch from your history containing only the subtree rooted at a folder like `module1` and `module2`.
+Split a new branch from your history containing only the subtree rooted at a folder.
 
 ```bash
-git subtree split -P module1/ -b module1
-git subtree split -P module2/ -b module2
+git subtree split -P [folder] -b [branch]
 ```
 
 For each branch, create (empty) target repository, on GitHub or locally. Add those repos as remotes and push the branches to the `master` of them.
 
 ```bash
-git init --bare /tmp/module1.git
-git remote add module1 /tmp/module1.git
-git push module1 module1:master
+git init --bare [/tmp/remote.git]
+git remote add [branch] [/tmp/remote.git]
+git push [remote] [branch]:master
 ```
 
 ![](img/git-screenshot.png)
@@ -23,16 +22,19 @@ git push module1 module1:master
 Clone those remotes to new places.
 
 ```bash
-git clone /tmp/module1.git module1
+git clone [/tmp/remote.git] [new-folder]
+cd [new-folder]
+git remote set-url origin [url-to-new-remote]
 ```
 
 Replace branches with submodules in the original repository.
 
 ```bash
-git remote rm module1
-git rm -r module1
-git submodule add url_to_repo module1
-git commit -m 'replaced the module1 folder with the module1 submodule'
+git remote remove [remote]
+git rm -r [folder]
+git branch -D [branch]
+git submodule add [url-to-new-remote]
+git commit -m 'replaced [folder] with the submodule'
 ```
 
 ## More Info
