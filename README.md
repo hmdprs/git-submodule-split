@@ -13,8 +13,8 @@ For each branch, create (empty) target repository, on GitHub or locally. Add tho
 
 ```bash
 git init --bare [/tmp/remote.git]
-git remote add [branch] [/tmp/remote.git]
-git push [remote] [branch]:master
+git remote add [remote-name] [/tmp/remote.git]
+git push [remote-name] [branch]:master
 ```
 
 ![](img/git-screenshot.png)
